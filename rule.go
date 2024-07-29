@@ -28,8 +28,8 @@ type Rule struct {
 	UseZero bool   // 是否使用零值
 }
 
-// WithFilter applies filter rules to the given dest struct
-func WithFilter(dest any) func(*gorm.DB) *gorm.DB {
+// Filter applies filter rules to the given dest struct
+func Filter(dest any) func(*gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
 		rv := reflect.ValueOf(dest)
 
@@ -101,8 +101,8 @@ func WithFilter(dest any) func(*gorm.DB) *gorm.DB {
 	}
 }
 
-// WithSearch applies search rules to the given dest struct
-func WithSearch(rules []Rule, dest any) func(*gorm.DB) *gorm.DB {
+// Search applies search rules to the given dest struct
+func Search(rules []Rule, dest any) func(*gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
 		rv := reflect.ValueOf(dest)
 
@@ -150,8 +150,8 @@ func WithSearch(rules []Rule, dest any) func(*gorm.DB) *gorm.DB {
 	}
 }
 
-// WithMultiSearch applies search rules to the given dest string
-func WithMultiSearch(rules []Rule, dest string) func(*gorm.DB) *gorm.DB {
+// MultiSearch applies search rules to the given dest string
+func MultiSearch(rules []Rule, dest string) func(*gorm.DB) *gorm.DB {
 	return func(db *gorm.DB) *gorm.DB {
 		dest = strings.TrimSpace(dest)
 		if dest == "" {

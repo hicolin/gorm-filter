@@ -18,28 +18,28 @@ type MockUserFilter struct {
 // Mock database
 var db *gorm.DB
 
-func ExampleWithFilter() {
+func ExampleFilter() {
 	var users []MockUser
 	user := MockUserFilter{
 		Name: "John",
 		Age:  20,
 	}
-	db.Scopes(WithFilter(user)).Find(&users)
+	db.Scopes(Filter(user)).Find(&users)
 }
 
-func ExampleWithSearch() {
+func ExampleSearch() {
 	var users []MockUser
 	user := MockUserFilter{
 		Name: "John",
 		Age:  20,
 	}
 	rule := []Rule{{Name: "name", Opt: "rlike"}, {Name: "age", Opt: "="}}
-	db.Scopes(WithSearch(rule, user)).Find(&users)
+	db.Scopes(Search(rule, user)).Find(&users)
 }
 
-func ExampleWithMultiSearch() {
+func ExampleMultiSearch() {
 	var users []MockUser
 	keyword := "keyword"
 	rule := []Rule{{Name: "name", Opt: "rlike"}, {Name: "age", Opt: "="}}
-	db.Scopes(WithMultiSearch(rule, keyword)).Find(&users)
+	db.Scopes(MultiSearch(rule, keyword)).Find(&users)
 }
