@@ -1,6 +1,7 @@
 package filter_test
 
 import (
+	"github.com/hicolin/gorm-filter/filter"
 	"gorm.io/gorm"
 )
 

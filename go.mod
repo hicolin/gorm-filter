@@ -1,4 +1,4 @@
-module github.com/hicolin/gorm-filter
+module github.com/hicolin/gormfilter
 
 go 1.21.10
 
