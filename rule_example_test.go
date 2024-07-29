@@ -1,4 +1,4 @@
-package filter_test
+package filter
 
 import (
 	"gorm.io/gorm"
@@ -24,7 +24,7 @@ func ExampleWithFilter() {
 		Name: "John",
 		Age:  20,
 	}
-	db.Scopes(filter.WithFilter(user)).Find(&users)
+	db.Scopes(WithFilter(user)).Find(&users)
 }
 
 func ExampleWithSearch() {
@@ -33,13 +33,13 @@ func ExampleWithSearch() {
 		Name: "John",
 		Age:  20,
 	}
-	rule := []filter.Rule{{Name: "name", Opt: "rlike"}, {Name: "age", Opt: "="}}
-	db.Scopes(filter.WithSearch(rule, user)).Find(&users)
+	rule := []Rule{{Name: "name", Opt: "rlike"}, {Name: "age", Opt: "="}}
+	db.Scopes(WithSearch(rule, user)).Find(&users)
 }
 
 func ExampleWithMultiSearch() {
 	var users []MockUser
 	keyword := "keyword"
-	rule := []filter.Rule{{Name: "name", Opt: "rlike"}, {Name: "age", Opt: "="}}
-	db.Scopes(filter.WithMultiSearch(rule, keyword)).Find(&users)
+	rule := []Rule{{Name: "name", Opt: "rlike"}, {Name: "age", Opt: "="}}
+	db.Scopes(WithMultiSearch(rule, keyword)).Find(&users)
 }
